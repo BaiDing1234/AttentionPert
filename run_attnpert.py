@@ -14,13 +14,6 @@ import argparse
 ################
 
 #set +o noclobber
-#CUDA_VISIBLE_DEVICES=0 python run_attnpert.py -test > res/output/attnpert_all_metrics_norman.txt 2>&1
-
-
-#CUDA_VISIBLE_DEVICES=0 python run_attnpert.py > res/output/attnpert_all_metrics_norman.txt 2>&1
-#CUDA_VISIBLE_DEVICES=1 python run_attnpert.py --dataset_name replogle_rpe1_essential > res/output/attnpert_all_metrics_rpe1.txt 2>&1
-#CUDA_VISIBLE_DEVICES=2 python run_attnpert.py --dataset_name replogle_k562_essential > res/output/attnpert_all_metrics_k562.txt 2>&1
-#CUDA_VISIBLE_DEVICES=3 python run_attnpert.py --beta 0 -record_pred > res/output/attnpert_all_metrics_norman_pure_add_record.txt 2>&1
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--split", type=int, default=1)
