@@ -7,7 +7,9 @@ This repository hosts the official implementation of AttentionPert, as well as t
 
 ## Installation 
 
-Directly: conda env create -f environment.yml
+```
+conda env create -f environment.yml
+```
 
 If not working: Install [PyG](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html), and then do `pip install cell-gears`.
 
@@ -15,17 +17,17 @@ If not working: Install [PyG](https://pytorch-geometric.readthedocs.io/en/latest
 
 ### Download datasets
 
-For the 3 datasets: "Norman", "RPE1" and "K562" used in our paper, you can download the preprocessed datasets from GEARS, and reduced GO graphs and gene2vec from us.
+For the 3 datasets: "Norman", "RPE1" and "K562" used in our paper, you can download the preprocessed datasets from GEARS, and reduced GO graphs and gene2vec matrices from us.
 
-Let's take Norman dataset as an example in the following steps. 
+Let's take Norman dataset as an example in following steps. 
 
-- Run `python pertdata_example.py --dataset_name norman` to get the dataset from GEARS (or download '[norman]https://dataverse.harvard.edu/api/access/datafile/6154020' directly and unzip it into 'data' directory).
+- Run `python pertdata_example.py --dataset_name norman` to get the norman dataset from GEARS (or download [norman](https://dataverse.harvard.edu/api/access/datafile/6154020) directly and unzip it into 'data' directory).
 
-- Remove /data/norman/go.csv (the GO graph used by GEARS which contains more genes than Norman dataset itself. We will use the reduced GO graph.)
+- Remove /data/norman/go.csv (we will use reduced GO graphs).
 
-- Download contents of 'AttentionPertDataResults/data/norman' from [Data&Results](https://mbzuaiac-my.sharepoint.com/:f:/g/personal/ding_bai_mbzuai_ac_ae/EuIsFdWM1WtKqdt-NnMkwjMBAeH4bA41mghaY5Zz6LToKA?e=fL9U58)
+- Download contents of "/data/norman" from [Data&Results](https://mbzuaiac-my.sharepoint.com/:f:/g/personal/ding_bai_mbzuai_ac_ae/EuIsFdWM1WtKqdt-NnMkwjMBAeH4bA41mghaY5Zz6LToKA?e=fL9U58)
 
-- Move them to /data/norman, Now Norman dataset is prepared! 
+- Move them to /data/norman. Now Norman dataset is prepared! 
 
 For other 2 datasets, just use "replogle_rpe1_essential" or "replogle_k562_essential" to replace "norman" in these steps.
 
@@ -41,7 +43,7 @@ Let's suppose dataset name is "sample_data"
 
 - Get gene2vec_dim_200_iter_9_w2v.txt from [Gene2Vec](https://github.com/jingcheng-du/Gene2vec/tree/master/pre_trained_emb) and move it to /data
 
-- Download 'AttentionPertDataResults/data/gene2go_all.pkl' from [Data&Results](https://mbzuaiac-my.sharepoint.com/:f:/g/personal/ding_bai_mbzuai_ac_ae/EuIsFdWM1WtKqdt-NnMkwjMBAeH4bA41mghaY5Zz6LToKA?e=fL9U58), move it to /data.
+- Download "/data/gene2go_all.pkl" from [Data&Results](https://mbzuaiac-my.sharepoint.com/:f:/g/personal/ding_bai_mbzuai_ac_ae/EuIsFdWM1WtKqdt-NnMkwjMBAeH4bA41mghaY5Zz6LToKA?e=fL9U58), move it to /data.
 
 - Run `python gene2vec_example.py --dataset_name sample_data` to get the gene2vec matrix.
 
@@ -65,7 +67,7 @@ python run_attnpert.py \
 > res/attnpert_norman_log.txt 2>&1 \ #output training log and test results.
 ```
 
-## Reproduce figures:
+## Reproduce figures
 
 Check /result_process, there is another README file for this.
 
