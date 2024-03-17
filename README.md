@@ -3,7 +3,7 @@
 This repository hosts the official implementation of AttentionPert, as well as the reproducing scripts of figures and tables in the paper and supplementray. 
 
 
-<p align="center"><img src="[https://github.com/BaiDing1234/AttentionPert/blob/main/img/model.pdf]" alt="attnpert" width="900px" /></p>
+<p align="center"><img src="https://github.com/BaiDing1234/AttentionPert/blob/main/img/model.pdf" alt="attnpert" width="900px" /></p>
 
 ## Installation 
 
