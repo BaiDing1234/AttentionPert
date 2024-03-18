@@ -267,7 +267,7 @@ for name, scenario in scenarios.items():
         first_legend = ax.legend(loc='upper left', fontsize = 11)
 
         plt.tight_layout()
-        plt.savefig(f'pdfs/to_show_{pert_name}.pdf', dpi = 300)
+        plt.savefig(f'figs/to_show_{pert_name}.pdf', dpi = 300)
         plt.close()
 
 
@@ -344,7 +344,7 @@ for name, scenario in scenarios.items():
     second_legend = plt.legend(handles=category_patches, loc='upper right', bbox_to_anchor=(0.006, -0.08), title = 'Scenarios', fontsize = 16, title_fontsize=16)
     #plt.setp(second_legend.get_title(),fontsize=16)
     plt.tight_layout()
-    plt.savefig(f'pdfs/pert_hist_relative_{name}.pdf', dpi = 300)
+    plt.savefig(f'figs/pert_hist_relative_{name}.pdf', dpi = 300)
     plt.close()
 
 
@@ -456,20 +456,20 @@ for name, scenario in scenarios.items():
         first_legend = ax.legend(loc='upper right', fontsize = 13)
 
         plt.tight_layout()
-        plt.savefig(f'non_add_figs/{name}/both_methods_{pert_name}.pdf')
+        plt.savefig(f'figs/{name}/both_methods_{pert_name}.pdf')
         plt.close()
 
 
 
 
 ################
-# create x = gene-perturbation degree, y = r-MSE scatter plot
+# create x = gene-perturbation degree, y = MSE scatter plot
 ################
 
 
 #Scatter plot for perturbations of 0/2, 1/2, 2/2, x: gene degree, y: average r-MSE
 for name, scenario in scenarios.items():
-    if name != "all":
+    if name != "all2":
         continue
     degree_vec = []
     for pert in scenario:
@@ -489,40 +489,34 @@ for name, scenario in scenarios.items():
 
     for method_idx, method in enumerate(["ours"]):
         pert_mean_dicts = method_pert_mean_dicts_dict[method]
-        rMSE_vecs = []
+        MSE_vecs = []
         for pert in scenario:
             for de_gene in np.union1d(DE_dict[pert], pert_graph_dict[pert]):
-                rMSE_vec = []
+                MSE_vec = []
                 for pert_mean_dict in pert_mean_dicts:
-                    rMSE_vec.append((pert_mean_dict[pert][de_gene, 0] ** 2) / (pert_mean_dict[pert][de_gene, 1] ** 2))
-                rMSE_vecs.append(rMSE_vec)
-        rMSE_vec = np.array(rMSE_vecs).mean(1) #DE * Num_perts,5 -> DE * Num_perts,
-        #rMSE_vec = np.log1p(rMSE_vec)
+                    MSE_vec.append((pert_mean_dict[pert][de_gene, 0] ** 2))
+                MSE_vecs.append(MSE_vec)
+        MSE_vec = np.array(MSE_vecs).mean(1) #DE * Num_perts,5 -> DE * Num_perts,
 
-        #args = np.where(degree_vec > 0)[0]
-
+        #args = np.where(MSE_vec < 1)[0]
         #degree_vec = degree_vec[args]
-        #rMSE_vec = rMSE_vec[args]
+        #MSE_vec = MSE_vec[args]
 
-        args = np.where(rMSE_vec < 1)[0]
-        degree_vec = degree_vec[args]
-        rMSE_vec = rMSE_vec[args]
-
-        slope, intercept, r_value, p_value, std_err = stats.linregress(degree_vec, rMSE_vec)
+        slope, intercept, r_value, p_value, std_err = stats.linregress(degree_vec, MSE_vec)
 
         # Create scatter plot
         plt.figure(i, figsize=(6, 4))
-        plt.scatter(degree_vec, rMSE_vec, label='Data Points', marker = ",", s = np.ones_like(degree_vec))
-        plt.plot(degree_vec, slope * degree_vec + intercept, color='red', label=f'Fit Line: y={slope:.2f}x+{intercept:.2f}')
+        plt.scatter(degree_vec, MSE_vec, label='Data Points', marker = "x", s = 4 * np.ones_like(degree_vec), color=".3")
+        plt.plot(degree_vec, slope * degree_vec + intercept, color='red', label=f'Fit Line: y={slope:.3f}x+{intercept:.3f}')
 
         # Add regression info
-        plt.text(0.05, 1.18, f'R-squared: {r_value**2:.3f}\nP-value: {p_value:.2e}\nStd Error: {std_err:.3f}', 
+        plt.text(0.05, 1.18, f'r-squared: {r_value**2:.3f}\np-value: {p_value:.3f}\nstderr: {std_err:.3f}', 
                 transform=plt.gca().transAxes, fontsize=10, verticalalignment='top')
 
         # Add legend, title, and labels
         plt.legend(loc = 'lower right', bbox_to_anchor=(1, 1))
         plt.xlabel('Perturbation-gene conectivity in GO graph') 
-        plt.ylabel(f'Relative Error') #Log-transformed 
+        plt.ylabel(f'Residual Error') 
         plt.tight_layout()
-        plt.savefig(f'detail_figs/pert_gene_degree_{method}_{name}.pdf')
+        plt.savefig(f'figs/pert_gene_degree_mse_{method}_{name}.pdf')
         plt.close()

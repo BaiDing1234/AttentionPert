@@ -129,4 +129,4 @@ for column in columns_to_plot:
         j += 1
 fig.legend(loc = 'upper right')
 fig.tight_layout()
-fig.savefig(f'fig/k562_pod_psd.pdf')
+fig.savefig(f'figs/k562_pod_psd.pdf')

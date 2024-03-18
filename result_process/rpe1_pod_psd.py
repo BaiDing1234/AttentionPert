@@ -129,5 +129,5 @@ for column in columns_to_plot:
         j += 1
 fig.legend(loc = 'upper right')
 fig.tight_layout()
-fig.savefig(f'fig/rpe1_pod_psd.pdf')
+fig.savefig(f'figs/rpe1_pod_psd.pdf')
 

@@ -53,5 +53,5 @@ for see in ['0/2', '1/2', '2/2']:
     plt.tight_layout()
 
     # save the plot
-    plt.savefig(f'fig/abl_splits_plot_{see_in_path}.pdf')
+    plt.savefig(f'figs/abl_splits_plot_{see_in_path}.pdf')
     #plt.close()

@@ -162,7 +162,7 @@ b.ax_heatmap.set_xlabel('Genes', labelpad=0, size=15)
 
 # b.ax_col_dendrogram.set_title('Errors Reveal Gene-specific Behavior')
 # plt.title('Errors Reveal Gene-specific Behavior', loc='left')
-plt.savefig('fig/clustermap_wide.pdf', bbox_inches='tight')
+plt.savefig('figs/clustermap_wide.pdf', bbox_inches='tight')
 
 col_idx = b.dendrogram_col.reordered_ind
 
@@ -220,7 +220,7 @@ for pertset in np.unique(pert_groups):
 
     # b.ax_col_dendrogram.set_title('Errors Reveal Gene-specific Behavior')
     # plt.title('Errors Reveal Gene-specific Behavior', loc='left')
-    plt.savefig(f'fig/clustermap_wide_split{pertset[:-2]}.pdf', bbox_inches='tight')
+    plt.savefig(f'figs/clustermap_wide_split{pertset[:-2]}.pdf', bbox_inches='tight')
     plt.clf()
 
 row_idx = []
@@ -280,4 +280,4 @@ b.ax_heatmap.set_xlabel('Genes', labelpad=0, size=15)
 
 # b.ax_col_dendrogram.set_title('Errors Reveal Gene-specific Behavior')
 # plt.title('Errors Reveal Gene-specific Behavior', loc='left')
-plt.savefig('fig/clustermap_wide_splits.pdf', bbox_inches='tight')
+plt.savefig('figs/clustermap_wide_splits.pdf', bbox_inches='tight')

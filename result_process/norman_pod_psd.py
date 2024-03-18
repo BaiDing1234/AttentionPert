@@ -132,7 +132,7 @@ for column in columns_to_plot:
         j += 1
 fig.legend(loc = 'upper right')
 fig.tight_layout()
-fig.savefig(f'fig/norman_pod_psd.pdf')
+fig.savefig(f'figs/norman_pod_psd.pdf')
 
 plt.close()
 
@@ -167,4 +167,4 @@ for i, metric in enumerate(metric_to_plot):
     ax.set_xticklabels(scenario_names)
 fig.legend(loc = 'upper right')
 fig.tight_layout()
-fig.savefig(f'fig/norman_split_1_pod_psd.pdf', dpi = 300)
+fig.savefig(f'figs/norman_split_1_pod_psd.pdf', dpi = 300)
