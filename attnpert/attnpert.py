@@ -36,7 +36,7 @@ class ATTNPERT_RECORD_TRAIN:
         
         if self.weight_bias_track:
             import wandb
-            wandb.init(project=proj_name, name=exp_name, entity = "deanghoss")  
+            wandb.init(project=proj_name, name=exp_name, entity = "your_entity")  
             self.wandb = wandb
         else:
             self.wandb = None
