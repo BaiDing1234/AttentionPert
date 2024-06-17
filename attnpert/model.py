@@ -249,9 +249,9 @@ class PL_PW_non_add_Model(torch.nn.Module):
         if self.ablation_strings["app"] != "N":
             ## add the perturbation positional embedding
             if self.ablation_strings["app"] == "S":
-                pert_emb = self.pert_w_mlp(self.pert_w(pert))
+                pert_emb = self.pert_w_mlp(self.pert_w(pert)).reshape((num_graphs, self.num_genes, -1))
             elif self.ablation_strings["app"] == "R":
-                pert_emb = self.pert_w_mlp(pert_indicator_emb)
+                pert_emb = self.pert_w_mlp(pert_indicator_emb).reshape((num_graphs, self.num_genes, -1))
             base_emb = pert_emb + base_emb
 
         ####################
