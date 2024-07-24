@@ -73,17 +73,25 @@ Check /result_process, there is another README file for this.
 
 ## Cite Us
 
+AttentionPert is now published!
+
 ```
-@article{bai2024attentionpert,
-    title={AttentionPert: Accurately Modeling Multiplexed Genetic Perturbations with Multi-scale Effects},
-    author={Bai, Ding and Ellington, Caleb and Mo, Shentong and Song, Le and Xing, Eric},
-    journal={bioRxiv},
-    pages={2024--02},
-    year={2024},
-    publisher={Cold Spring Harbor Laboratory}
+@article{10.1093/bioinformatics/btae244,
+    author = {Bai, Ding and Ellington, Caleb N and Mo, Shentong and Song, Le and Xing, Eric P},
+    title = "{AttentionPert: accurately modeling multiplexed genetic perturbations with multi-scale effects}",
+    journal = {Bioinformatics},
+    volume = {40},
+    number = {Supplement_1},
+    pages = {i453-i461},
+    year = {2024},
+    month = {06},
+    issn = {1367-4811},
+    doi = {10.1093/bioinformatics/btae244},
+    url = {https://doi.org/10.1093/bioinformatics/btae244},
+    eprint = {https://academic.oup.com/bioinformatics/article-pdf/40/Supplement\_1/i453/58355083/btae244.pdf},
 }
 ```
-Preprint: [Link](https://www.biorxiv.org/content/10.1101/2024.02.02.578656)
+Paper: [Link](https://academic.oup.com/bioinformatics/article/40/Supplement_1/i453/7700899)
 
 
 ## Acknowledgments
